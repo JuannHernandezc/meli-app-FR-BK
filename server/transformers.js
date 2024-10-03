@@ -38,11 +38,11 @@ const transformDataItemById = (req, res, next) => {
     },
     picture: itemData.thumbnail,
     condition: itemData.condition,
-    free_shiping: itemData.shipping.free_shiping,
-    sold_quantity: itemData.sold_quantity,
+    free_shiping: itemData.shipping.free_shipping,
+    sold_quantity: itemData.initial_quantity,
     description: descriptionData.plain_text,
   };
-  res.locals.transformedData = {
+  res.locals.transformedDataById = {
     author: {
       name: "Juan",
       lastName: "Hernandez",

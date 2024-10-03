@@ -10,7 +10,7 @@ router.get('/api/items', getItems, transformDataItems, (req, res) => {
 });
 
 router.get('/api/items/:id', getItemById, transformDataItemById, (req, res) => {
-    res.json(res.locals.transformedData);
+    res.json(res.locals.transformedDataById);
 });
 
 module.exports = router;
