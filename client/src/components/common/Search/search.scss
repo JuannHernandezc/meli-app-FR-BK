@@ -1,0 +1,38 @@
+@import '../../../styles/global.scss';
+
+.search {
+    align-items: center;
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+}
+
+.search img {
+    cursor: pointer;
+}
+
+.search-middle {
+    display: flex;
+    width: 60%;
+}
+
+.search-middle input {
+    border-radius: 4px 0 0 4px;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    width: 96%;
+}
+
+.search-middle-icon {
+    align-items: center;
+    background-color: $background-color;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 4%;
+    border: none;
+}

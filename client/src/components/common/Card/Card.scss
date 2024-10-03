@@ -1,0 +1,30 @@
+@import "../../../styles/global.scss";
+.card {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EEEEEE;
+    cursor: pointer;
+}
+
+.card-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+
+}
+
+.card-content-price {
+    font-size: 24px;
+}
+
+.card-content-title {
+    font-size: 18px;
+}
