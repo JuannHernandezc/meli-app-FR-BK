@@ -1,31 +1,42 @@
-function CardDetail() {
+import { currencyMapper } from "../../../helpers/mappers/currency";
+import "./CardDetail.scss";
+
+interface CardDetailProps {
+  title: string;
+  image: string;
+  price: number;
+  description: string;
+  sold_quantity: number;
+}
+function CardDetail({
+  title,
+  image,
+  price,
+  description,
+  sold_quantity,
+}: CardDetailProps) {
   return (
-    <div>
-      <div>
-        <img
-          src="http://http2.mlstatic.com/D_615774-MLA46552695388_062021-I.jpg"
-          alt="placeholder"
-        />
-        <div>
-          <p>Nuevo - 234 vendidos</p>
-          <p>
-            Apple iPhone SE (2da Generación) 128 Gb - Negro - Distribuidor
-            Autorizado
-          </p>
-          <p>15000</p>
-          <button>Comprar</button>
+    <>
+      <div className="detail">
+        <div className="detail-main">
+          <div className="detail-left">
+            <img className="detail-left__image" src={image} alt="placeholder" />
+          </div>
+          <div className="detail-right">
+            <p className="detail-right__sold">
+              Nuevo - {sold_quantity} vendidos
+            </p>
+            <p className="detail-right__title">{title}</p>
+            <p className="detail-right__price">{currencyMapper(price)}</p>
+            <button className="buy">Comprar</button>
+          </div>
+        </div>
+        <div className="description">
+          <p className="description__title">Descripcion del producto</p>
+          <p className="description__text">{description}</p>
         </div>
       </div>
-      <div>
-        <p>Descripcion del producto</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ipsam
-          nemo, impedit animi consequuntur, pariatur nulla a iure cupiditate
-          labore laudantium nostrum aliquam voluptates minus. Voluptatem ipsa
-          tempore pariatur reiciendis?
-        </p>
-      </div>
-    </div>
+    </>
   );
 }
 
