@@ -33,7 +33,7 @@ function CardDetail({
         </div>
         <div className="description">
           <p className="description__title">Descripcion del producto</p>
-          <p className="description__text">{description}</p>
+          <p className="description__text">{description || 'No se encontro descripción del producto'}</p>
         </div>
       </div>
     </>

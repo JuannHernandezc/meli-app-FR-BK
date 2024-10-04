@@ -1,4 +1,11 @@
 const transformDataItems = (req, res, next) => {
+  const categories = res.locals.data.filters
+    .map((item) => {
+      return item.values.map((value) => {
+        return value.name
+      })
+    });
+
   const resultSearchItem = res.locals.data.results
     .slice(0, 4)
     .map((itemSearched) => {
@@ -23,6 +30,7 @@ const transformDataItems = (req, res, next) => {
       lastName: "Hernandez",
     },
     items: resultSearchItem,
+    categories: categories.flat()
   };
   next();
 };

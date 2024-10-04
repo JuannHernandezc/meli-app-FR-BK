@@ -7,7 +7,7 @@ interface SearchProps {
   placeholderInput: string;
   imageSearch: string;
   iconSearch: string;
-  value: string | null;
+  value?: string | null;
 }
 
 function Search({ typeInput, placeholderInput, imageSearch, iconSearch, value }: SearchProps) {

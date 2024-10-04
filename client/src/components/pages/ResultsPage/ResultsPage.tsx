@@ -3,11 +3,13 @@ import Search from "../../common/Search/Search";
 import { useEffect, useState } from "react";
 import Card from "../../common/Card/Card";
 import "./ResultsPage.scss";
+import BreadCrumb from "../../common/BreadCrumb/BreadCrumb";
 
 function ResultsPage() {
   interface Item {
     author: Author;
     items: Items[];
+    categories: string[];
   }
 
   interface Author {
@@ -31,6 +33,7 @@ function ResultsPage() {
   }
 
   const [results, setResults] = useState<Items[]>();
+  const [breadcrumb, setBreadcrumb] = useState<string[]>();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -39,6 +42,7 @@ function ResultsPage() {
       .then((res) => res.json())
       .then((data) => {
         setResults(data.items);
+        setBreadcrumb(data.categories);
       });
   }, [searchParams]);
 
@@ -51,6 +55,9 @@ function ResultsPage() {
         iconSearch="/images/icon-search.png"
         value={searchParams.get("q")}
       />
+      {
+        breadcrumb && <BreadCrumb categories={ breadcrumb } />
+      }
       <div className="results-container">
         {results?.map((item) => {
           return (
