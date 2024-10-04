@@ -1,30 +1,36 @@
 @import "../../../styles/global.scss";
 .card {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #EEEEEE;
-    cursor: pointer;
-}
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $fifth-color;
+  cursor: pointer;
 
-.card-image {
+  &__image {
     width: 180px;
     height: 180px;
-    border-radius: 4px;
-    padding: 16px;
-}
+    border-radius: $border-radius;
+    padding: $small;
+  }
 
-.card-content {
+  &-content {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: $large;
 
+    &-amount {
+      display: flex;
+      align-items: center;
+      gap: $extra-small;
 
-}
+      &__price {
+        font-size: $medium;
+        color: $second-color;
+      }
+    }
 
-.card-content-price {
-    font-size: 24px;
-}
-
-.card-content-title {
-    font-size: 18px;
+    &__title {
+        font-size: 18px;
+        color: $second-color;
+    }
+  }
 }

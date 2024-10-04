@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./search.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -7,11 +7,18 @@ interface SearchProps {
   placeholderInput: string;
   imageSearch: string;
   iconSearch: string;
+  value: string | null;
 }
 
-function Search({ typeInput, placeholderInput, imageSearch, iconSearch }: SearchProps) {
+function Search({ typeInput, placeholderInput, imageSearch, iconSearch, value }: SearchProps) {
   const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(value) {
+      setInputValue(value);
+    }
+  }, [value]);
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);

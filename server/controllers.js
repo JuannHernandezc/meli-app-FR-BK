@@ -9,6 +9,7 @@ const getItems = async (req, res, next) => {
       `${URI_BASE}/sites/MLA/search?q=${query}`
     );
     res.locals.data = response.data;
+    // console.log(res.locals.data.results.slice(0, 4));
     next();
   } catch (error) {
     res.status(500).json({ error: error.message });

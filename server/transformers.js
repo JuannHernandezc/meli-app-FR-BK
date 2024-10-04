@@ -2,17 +2,19 @@ const transformDataItems = (req, res, next) => {
   const resultSearchItem = res.locals.data.results
     .slice(0, 4)
     .map((itemSearched) => {
+      const [amount] = itemSearched.sale_price.amount.toString().split('.');
+
       return {
         id: itemSearched.id,
         title: itemSearched.title,
         price: {
           currency: itemSearched.sale_price.currency_id,
-          amount: itemSearched.sale_price.amount,
-          decimals: "",
+          amount: parseInt(amount, 10),
+          decimals: itemSearched.sale_price.amount,
         },
         picture: itemSearched.thumbnail,
         condition: itemSearched.condition,
-        free_shiping: itemSearched.shipping.free_shiping,
+        free_shipping: itemSearched.shipping.free_shipping,
       };
     });
   res.locals.transformedData = {
@@ -28,13 +30,16 @@ const transformDataItems = (req, res, next) => {
 const transformDataItemById = (req, res, next) => {
   const itemData = res.locals.itemData;
   const descriptionData = res.locals.descriptionData;
+
+  const [amount] = itemData.price.toString().split('.');
+
   const resultSearchItemById = {
     id: itemData.id,
     title: itemData.title,
     price: {
       currency: itemData.currency_id,
-      amount: itemData.price,
-      decimals: "",
+      amount: parseInt(amount, 10),
+      decimals: itemData.price,
     },
     picture: itemData.thumbnail,
     condition: itemData.condition,

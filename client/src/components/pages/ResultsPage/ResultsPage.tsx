@@ -49,6 +49,7 @@ function ResultsPage() {
         placeholderInput="Nunca dejes de buscar"
         imageSearch="/images/logo-meli.png"
         iconSearch="/images/icon-search.png"
+        value={searchParams.get("q")}
       />
       <div className="results-container">
         {results?.map((item) => {
@@ -59,6 +60,7 @@ function ResultsPage() {
               imageCard={item.picture}
               priceCard={item.price.amount}
               titleCard={item.title}
+              freeShippingCard={item.free_shipping}
             />
           );
         })}

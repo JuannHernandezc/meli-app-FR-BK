@@ -1,31 +1,31 @@
-import { useNavigate } from 'react-router-dom';
-import './Card.scss';
-import { currencyMapper } from '../../../helpers/mappers/currency';
+import { useNavigate } from "react-router-dom";
+import "./Card.scss";
+import { currencyMapper } from "../../../helpers/mappers/currency";
 interface CardProps {
-    id: string;
-    imageCard: string;
-    priceCard: number;
-    titleCard: string;
+  id: string;
+  imageCard: string;
+  priceCard: number;
+  titleCard: string;
+  freeShippingCard: boolean;
 }
-function Card({id, imageCard, priceCard, titleCard}: CardProps) {
-    const navigate = useNavigate();
-    const redirectCard = (id: string) => () => {
-        navigate(`/items/${id}`);
-    };
-    
+function Card({ id, imageCard, priceCard, titleCard , freeShippingCard }: CardProps) {
+  const navigate = useNavigate();
+  const redirectCard = (id: string) => () => {
+    navigate(`/items/${id}`);
+  };
+
   return (
     <>
-      <div onClick={redirectCard(id)} className='card'>
-        <img
-          className='card-image'
-          src={imageCard}
-          alt=""
-        />
-        <div className='card-content'>
-          <p className='card-content-price'>{currencyMapper(priceCard)}</p>
-          <p className='card-content-title'>
-            {titleCard}
-          </p>
+      <div className="card" onClick={redirectCard(id)}>
+        <img className="card__image" src={imageCard} alt="" />
+        <div className="card-content">
+          <div className="card-content-amount">
+            <p className="card-content-amount__price">{currencyMapper(priceCard)}</p>
+            {
+              freeShippingCard && <img src="images/icon-shipping.png" alt="" />
+            }
+          </div>
+          <p className="card-content__title">{titleCard}</p>
         </div>
       </div>
     </>
